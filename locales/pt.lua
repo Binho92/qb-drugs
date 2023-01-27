@@ -13,7 +13,8 @@ local Translations = {
         dealer_already_exists = "Já existe um dealer com este nome",
         dealer_not_exists = "Este dealer não existe",
         no_dealers = "Não foi colocado nenhum dealer",
-        dealer_not_exists_command = "Dealer %{dealerName} não existe"
+        dealer_not_exists_command = "Dealer %{dealerName} não existe",
+        in_vehicle = "Não podes vender dentro do veículo"
     },
     success = {
         helped_player = "Ajudaste uma pessoa",
@@ -30,10 +31,16 @@ local Translations = {
         suspicious_situation = "Atividade suspeita",
         possible_drug_dealing = "Possivel venda de drogas",
         drug_offer = "[~g~E~w~] %{bags}x %{drugLabel} por $%{randomPrice}? / [~g~G~w~] Rejeitar oferta",
-        pick_up_button = "[~g~E~w~] Apanhar",
-        knock_button = "[~g~E~w~] Bater",
-        mystery_man_button = "[~g~E~w~] Comprar / [~g~G~w~] Ajuda o homem ($5000)",
-        other_dealers_button = "[~g~E~w~] Comprar / [~g~G~w~] Começar uma missão",
+        target_drug_offer = "%{bags}x %{drugLabel} por $%{randomPrice}?",
+        search_ped = "Revistar Ped",
+        pick_up_button = "[E] Apanhar",
+        knock_button = "[E] Bater",
+        target_knock = 'Bater á porta',
+        target_deliver = 'Entregar drogas',
+        target_openshop = 'Abrir Loja',
+        target_request = 'Solicitar entrega',
+        mystery_man_button = "[E] Comprar / [G] Ajudar ($5000)",
+        other_dealers_button = "[E] Comprar / [G] Começar uma missão",
         reviving_player = "Ajudar pessoa a levantar...",
         dealer_name = "Dealer %{dealerName}",
         sending_delivery_email = "São estes os produtos, vou-te falando por email",
@@ -65,14 +72,12 @@ local Translations = {
         dealergoto_command_help1_name = "nome",
         dealergoto_command_help1_help = "Nome Dealer",
         list_dealers_title = "Lista de todos os dealers: ",
-        list_dealers_name_prefix = "Nome: "
+        list_dealers_name_prefix = "Nome: ",
+        selling_to_ped = "A vender drogas..."
     }
 }
 
-if GetConvar('qb_locale', 'en') == 'pt' then
-    Lang = Locale:new({
-        phrases = Translations,
-        warnOnMissing = true,
-        fallbackLang = Lang,
-    })
-end
+Lang = Lang or Locale:new({
+    phrases = Translations,
+    warnOnMissing = true
+})
